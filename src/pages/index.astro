@@ -1,48 +1,18 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import About from "../components/home/About.astro";
+import Stack from "../components/home/Stack.astro";
+import FeaturedProjects from "../components/home/FeaturedProjects.astro";
+import ContactCTA from "../components/home/ContactCTA.astro";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Alexis Flores | Portafolio</title>
-    <meta
-      name="description"
-      content="Portafolio profesional de Alexis Flores, informático orientado a Big Data, Ciencia de Datos y Machine Learning."
-    />
-  </head>
-
-  <body class="min-h-screen bg-slate-950 text-white">
-    <main class="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
-        Data · Software · Machine Learning
-      </p>
-
-      <h1 class="max-w-3xl text-5xl font-black tracking-tight text-white md:text-7xl">
-        Alexis Flores, informático orientado a datos y software.
-      </h1>
-
-      <p class="mt-6 max-w-2xl text-lg text-slate-300">
-        Portafolio profesional construido con Astro, TypeScript y Tailwind CSS,
-        enfocado en rendimiento, contenido técnico y proyectos escalables.
-      </p>
-
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a
-          href="#proyectos"
-          class="rounded-full bg-cyan-300 px-5 py-3 font-bold text-slate-950 transition hover:bg-cyan-200"
-        >
-          Ver proyectos
-        </a>
-
-        <a
-          href="mailto:tu-correo@ejemplo.com"
-          class="rounded-full border border-white/20 px-5 py-3 font-bold text-white transition hover:bg-white/10"
-        >
-          Contacto
-        </a>
-      </div>
-    </main>
-  </body>
-</html>
+<BaseLayout title="Alexis Flores | Data & Software Portfolio">
+  <main>
+    <Hero />
+    <About />
+    <Stack />
+    <FeaturedProjects />
+    <ContactCTA />
+  </main>
+</BaseLayout>

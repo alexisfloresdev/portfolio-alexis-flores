@@ -1,0 +1,11 @@
+---
+import { siteConfig } from "../../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/10 py-10 text-center text-sm text-slate-400">
+  <div class="section-container">
+    <p>© {year} {siteConfig.fullName}. Construido con Astro y TypeScript.</p>
+  </div>
+</footer>

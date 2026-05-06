@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../../data/site";
+---
+
+<section id="contacto" class="section-container py-24">
+  <div class="glass-card grid gap-8 rounded-[2rem] p-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+    <div>
+      <p class="mb-3 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">
+        Contacto
+      </p>
+      <h2 class="text-4xl font-black tracking-[-0.05em] md:text-5xl">
+        Disponible para oportunidades junior, práctica o proyectos tecnológicos.
+      </h2>
+      <p class="mt-5 text-slate-300">
+        Podemos conectar esta sección con tu correo real, LinkedIn, GitHub y CV descargable.
+      </p>
+    </div>
+
+    <div class="grid gap-3">
+      <a
+        href={`mailto:${siteConfig.email}`}
+        class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 font-bold transition hover:bg-white/10"
+      >
+        Email
+      </a>
+      <a
+        href={siteConfig.github}
+        class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 font-bold transition hover:bg-white/10"
+      >
+        GitHub
+      </a>
+      <a
+        href={siteConfig.linkedin}
+        class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 font-bold transition hover:bg-white/10"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
