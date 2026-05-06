@@ -57,3 +57,52 @@ body::before {
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
 }
+
+.project-content {
+  color: rgb(203 213 225);
+}
+
+.project-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: white;
+  font-weight: 900;
+}
+
+.project-content h2:first-child {
+  margin-top: 0;
+}
+
+.project-content p {
+  margin-block: 1rem;
+  line-height: 1.8;
+}
+
+.project-content ul {
+  margin-block: 1rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.project-content li {
+  margin-block: 0.5rem;
+}
+
+.project-content strong {
+  color: white;
+}
+
+.project-content a {
+  color: rgb(103 232 249);
+  font-weight: 800;
+}
+
+.project-content code {
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.35rem;
+  color: rgb(103 232 249);
+}

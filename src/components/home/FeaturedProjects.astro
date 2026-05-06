@@ -1,42 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../projects/ProjectCard.astro";
+
+const projects = (await getCollection("projects", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+}))
+  .filter((project) => project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
 <section id="proyectos" class="section-container py-24">
-  <div class="mb-10 max-w-3xl">
-    <p class="mb-3 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">
-      Proyectos
-    </p>
-    <h2 class="text-4xl font-black tracking-[-0.05em] md:text-5xl">
-      Casos de estudio principales.
-    </h2>
+  <div class="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-3xl">
+      <p class="mb-3 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">
+        Proyectos
+      </p>
+      <h2 class="text-4xl font-black tracking-[-0.05em] md:text-5xl">
+        Casos de estudio principales.
+      </h2>
+    </div>
+
+    <a
+      href="/proyectos"
+      class="w-fit rounded-full border border-white/15 px-5 py-3 font-black text-white transition hover:bg-white/10"
+    >
+      Ver galería completa
+    </a>
   </div>
 
   <div class="grid gap-4 md:grid-cols-3">
-    <article class="glass-card rounded-3xl p-6">
-      <p class="mb-3 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-        Software
-      </p>
-      <h3 class="mb-3 text-xl font-black">Sistema POS online</h3>
-      <p class="text-slate-300">
-        Sistema de ventas en etapa beta con backend, base de datos y despliegue cloud.
-      </p>
-    </article>
-
-    <article class="glass-card rounded-3xl p-6">
-      <p class="mb-3 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-        Machine Learning
-      </p>
-      <h3 class="mb-3 text-xl font-black">Clasificación de imágenes</h3>
-      <p class="text-slate-300">
-        Proyecto orientado a modelos, datasets, entrenamiento y evaluación de resultados.
-      </p>
-    </article>
-
-    <article class="glass-card rounded-3xl p-6">
-      <p class="mb-3 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-        Web
-      </p>
-      <h3 class="mb-3 text-xl font-black">Portafolio técnico</h3>
-      <p class="text-slate-300">
-        Este sitio como proyecto: Astro, TypeScript, rendimiento, SEO y arquitectura modular.
-      </p>
-    </article>
+    {projects.map((project) => <ProjectCard project={project} />)}
   </div>
 </section>

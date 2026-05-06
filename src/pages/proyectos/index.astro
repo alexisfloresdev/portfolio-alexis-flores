@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+})).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = [...new Set(projects.map((project) => project.data.category))];
+---
+
+<BaseLayout title="Proyectos | Alexis Flores">
+  <main class="section-container py-24">
+    <section class="mb-12 max-w-3xl">
+      <p class="mb-3 text-sm font-black uppercase tracking-[0.25em] text-cyan-300">
+        Galería
+      </p>
+
+      <h1 class="text-5xl font-black tracking-[-0.06em] text-white md:text-7xl">
+        Proyectos técnicos y casos de estudio.
+      </h1>
+
+      <p class="mt-6 text-lg leading-8 text-slate-300">
+        Cada proyecto está documentado desde MDX, con contexto, problema,
+        solución, stack técnico, aprendizajes y mejoras futuras.
+      </p>
+    </section>
+
+    <section class="mb-8 flex flex-wrap gap-3">
+      <span class="rounded-full bg-cyan-300 px-4 py-2 text-sm font-black text-slate-950">
+        Todos: {projects.length}
+      </span>
+
+      {categories.map((category) => (
+        <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-300">
+          {category}
+        </span>
+      ))}
+    </section>
+
+    <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </section>
+  </main>
+</BaseLayout>
